@@ -1,0 +1,272 @@
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+% The MIT License (MIT)
+%
+% Copyright (c) 2021 Jitin Nair
+%
+% Permission is hereby granted, free of charge, to any person obtaining a copy
+% of this software and associated documentation files (the "Software"), to deal
+% in the Software without restriction, including without limitation the rights
+% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+% copies of the Software, and to permit persons to whom the Software is
+% furnished to do so, subject to the following conditions:
+% 
+% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+% THE SOFTWARE.
+% 
+%
+%-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+%----------------------------------------------------------------------------------------
+% DOCUMENT DEFINITION
+%----------------------------------------------------------------------------------------
+
+% article class because we want to fully customize the page and not use a cv template
+\documentclass[a4paper,10pt]{article}
+
+%----------------------------------------------------------------------------------------
+% FONT
+%----------------------------------------------------------------------------------------
+
+% % fontspec allows you to use TTF/OTF fonts directly
+% \usepackage{fontspec}
+% \defaultfontfeatures{Ligatures=TeX}
+
+% % modified for ShareLaTeX use
+% \setmainfont[
+% SmallCapsFont = Fontin-SmallCaps.otf,
+% BoldFont = Fontin-Bold.otf,
+% ItalicFont = Fontin-Italic.otf
+% ]
+% {Fontin.otf}
+
+%----------------------------------------------------------------------------------------
+% PACKAGES
+%----------------------------------------------------------------------------------------
+\usepackage{url}
+\usepackage{parskip} 	
+
+%other packages for formatting
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9]{geometry}
+
+%tabularx environment
+\usepackage{tabularx}
+
+%for lists within experience section
+\usepackage{enumitem}
+
+% centered version of 'X' col. type
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+%to prevent spillover of tabular into next pages
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.47\textwidth}
+
+%custom \section
+\usepackage{titlesec} 				
+\usepackage{multicol}
+\usepackage{multirow}
+
+%CV Sections inspired by: 
+%http://stefano.italians.nl/archives/26
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{10pt}{10pt}
+
+%for publications
+\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
+
+%Setup hyperref package, and colours for links
+\usepackage[unicode, draft=false]{hyperref}
+\definecolor{linkcolour}{rgb}{0,0.2,0.6}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
+\addbibresource{citations.bib}
+\setlength\bibitemsep{1em}
+
+%for social icons
+\usepackage{fontawesome5}
+
+%debug page outer frames
+%\usepackage{showframe}
+
+%----------------------------------------------------------------------------------------
+% BEGIN DOCUMENT
+%----------------------------------------------------------------------------------------
+\begin{document}
+
+% non-numbered pages
+\pagestyle{empty} 
+
+%----------------------------------------------------------------------------------------
+% TITLE
+%----------------------------------------------------------------------------------------
+
+\begin{tabularx}{\linewidth}{@{} C @{} }
+\Huge{Dawid Pisarczyk} \\[7.5pt]
+\href{https://github.com/Dawe000}{\raisebox{-0.05\height}\faGithub\ Dawe000} \ $|$ \ 
+\href{https://www.linkedin.com/in/dawid-pisarczyk-657850147/}{\raisebox{-0.05\height}\faLinkedin\ Dawid Pisarczyk} \ $|$ \  
+\href{mailto:dawid.pisarczyk@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ dawid.pisarczyk@gmail.com} \ $|$ \ 
+\href{tel:+447756636038}{\raisebox{-0.05\height}\faMobile \ +447756636038} \ $|$ \
+\href{https://dawidpisarczyk.com}{\raisebox{-0.05\height}\faGlobe \ dawidpisarczyk.com} \\
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% SUMMARY
+%----------------------------------------------------------------------------------------
+
+\section{Summary}
+Innovative and driven software developer with a strong foundation in blockchain technologies, decentralized finance (DeFi), and smart contract security. Experienced in building scalable decentralized applications, integrating cryptocurrency wallets, and developing Web3 infrastructure. Proficient in TypeScript, React, and Solidity, with hands-on experience across the full development stack including hosting, SEO, and secure backend integration. Currently pursuing an MEng in Computer Science with Cyber Security at the University of Southampton, with a focus on privacy-enhancing technologies and blockchain scalability. Passionate about contributing to cutting-edge DeFi and wallet infrastructure projects, leveraging strong problem-solving skills and a deep curiosity for emerging technologies in the Web3 ecosystem.
+
+%----------------------------------------------------------------------------------------
+% PROJECTS
+%----------------------------------------------------------------------------------------
+
+\section{Projects}
+
+\begin{tabularx}{\linewidth}{@{}l r@{}}
+
+\textbf{CodeGene – AI-Powered Smart Contract Security Platform} & \hfill \href{https://github.com/dawe000/codegene}{GitHub} \\[4pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{itemize}[leftmargin=*]
+    \item Developed a VS Code extension for Hardhat projects, integrating AI-driven vulnerability scanning and automated penetration test generation directly within the IDE.
+    \item Implemented real-time security insights and in-editor remediation suggestions, streamlining the audit process through seamless integration with local Hardhat environments and LLM-driven test refinement.
+    \item Introduced cross-chain contract translation capabilities, facilitating interoperability across different blockchain platforms.
+    \item Deployed NFT-backed insurance certificates (ERC-721 tokens) that serve as verifiable on-chain proofs of insurance, providing blockchain developers with a comprehensive safety net for smart contract deployment.
+\end{itemize}
+} \\ [6pt]
+
+\textbf{LLMBroker – Decentralized Compute-Sharing Platform for LLMs} & \hfill \href{https://github.com/Dawe000/LLMBroker}{GitHub} \\[4pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{itemize}[leftmargin=*]
+    \item Engineered a decentralized platform enabling users to run large language model (LLM) inferences on idle computing hardware, offering crypto rewards to participants.
+    \item Integrated smart contracts, remote procedure call (RPC) interactions, RESTful APIs, and cryptocurrency payment mechanisms to facilitate secure and trustless transactions.
+    \item Utilized the Flare Time Series Oracle (FTSO) to obtain real-time FLR-to-USD price data, stabilizing input token prices within smart contracts and ensuring fair compensation for compute providers.
+    \item Published an NPM package that simplifies interaction with the smart contract marketplace, abstracting token purchasing, server discovery, and request handling into an easy-to-use JavaScript library.
+\end{itemize}
+} \\[6pt]
+
+\textbf{XRPLendNet – NFT-Collateralized Lending DApp} & \hfill \href{https://github.com/DanyloPiatyhorets/XRPLendNet}{GitHub} \\[4pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{itemize}[leftmargin=*]
+    \item Developed a decentralized application (DApp) on the XRP Ledger EVM sidechain, enabling users to securely and conveniently set up, trade, and achieve loans between users using NFTs as collateral.
+    \item Designed loans as transferable NFTs, allowing for securitization, transferability, and collateral functionality.
+    \item Implemented functionality for NFTs and tokenized real-world assets (RWAs) to serve as collateral for loans, enhancing the utility and liquidity of digital assets.
+    \item Recognized with a technical prize at the EasyA XRP London Hackathon for innovation in decentralized finance solutions.
+\end{itemize}
+} \\[6pt]
+
+\textbf{AssetXChange – Real-World Asset Tokenization DApp} & \hfill \href{https://github.com/ojasarora77/AssetXchange}{GitHub} \\[4pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{itemize}[leftmargin=*]
+    \item Created a user-friendly DApp for tokenizing and managing real-world assets on the Etherlink Layer 2 blockchain, making asset management accessible to non-technical users.
+    \item Enabled businesses to create customizable "Asset Types" and tokenized assets, facilitating internal resource management or customer transactions.
+    \item Deployed ERC-721 smart contracts on the Etherlink testnet to enhance secure linking of on-chain and off-chain data, ensuring transparency and traceability of assets.
+    \item Recognized for innovation with a mainline track prize at the ETH Oxford Hackathon, highlighting the project's impact on simplifying asset tokenization processes.
+\end{itemize}
+}
+
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% EDUCATION
+%----------------------------------------------------------------------------------------
+
+\section{Education}
+\begin{tabularx}{\linewidth}{@{}l X@{}} 	
+September 2023 - July 2027 & MEng Comp Sci with Cyber Security at \textbf{University of Southampton} \hfill \normalsize \\
+
+September 2021 - July 2023 & Alevels at \textbf{Bournemouth School} \hfill (AAAB) \\
+\end{tabularx}
+
+
+%----------------------------------------------------------------------------------------
+% SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Skills}
+
+\begin{itemize}
+    \item \textbf{Web Development:} ReactJS, NextJS, TailwindCSS, RESTful APIs using ExpressJS
+    \item \textbf{Blockchain \& Smart Contracts:} Solidity, Hardhat, Remix, RPC \& Wallet interaction (Thirdweb, web3js), IPFS, ERC20
+    \item \textbf{Programming Languages:} Javascript, Typescript, Java, C\#, SQL (SQLite, DataGrip), Haskell, LaTeX, Solidity, Python
+    \item \textbf{Tools \& Frameworks:} Node.js, Git/GitHub, Vercel, Solidity, Remix IDE
+    \item \textbf{Cloud \& APIs:} Cloudflare, Vercel, RESTful APIs (ExpressJS), Flare Time Series Oracle (FTSO)
+    \item \textbf{Security \& Cryptography:} Cybersecurity fundamentals, encryption techniques, smart contract security
+\end{itemize}
+
+%----------------------------------------------------------------------------------------
+% WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Freelance Web Developer – Architectural Studio} & \hfill February 2025 – Present \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Designed and developed a responsive, SEO-optimized website showcasing the firm's portfolio, enhancing online visibility and client engagement.
+        \item[--] Implemented a secure contact form with backend integration, facilitating efficient client inquiries and communication.
+        \item[--] Managed domain registration, hosting setup, and ongoing maintenance, ensuring website reliability and performance.
+        \item[--] Collaborated closely with the architectural team to translate design aesthetics into a cohesive digital presence.
+    \end{itemize}
+\end{minipage}
+}
+\end{tabularx}
+
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Team Member - Wingstop Southampton} & \hfill August 2024 - January 2025\\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Efficiently learned and adapted to various FOH and BOH roles, leveraging previous skills to quickly become proficient and support smooth operations.
+        \item[--] Delivered fast, friendly customer service while maintaining food quality and safety standards, ensuring a positive dining experience.
+        \item[--] Collaborated closely with team members to ensure seamless coordination during peak hours, contributing to overall team success and customer satisfaction.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Volunteer Teaching Assistant - ABC Polish School Poole} & \hfill September 2022 - April 2023 \\[3.75pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
+        \item[--] Supported teachers in delivering lessons and activities to students, providing individualized assistance where needed.
+        \item[--] Offered support to students with their language learning journey, reinforcing concepts and facilitating practice sessions.
+        \item[--] Incorporated elements of Polish culture into lesson plans, enriching students' understanding of their heritage through activities such as storytelling, traditional games, or celebrating Polish holidays.
+    \end{itemize}
+    \end{minipage}
+}
+\end{tabularx}
+
+
+
+%----------------------------------------------------------------------------------------
+% EXTRACURRICULARS
+%----------------------------------------------------------------------------------------
+
+\section{Extracurriculars and Interests}
+
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Current Focus:} Deepening expertise in smart contract security, exploring Trusted Execution Environments (TEEs), and advancing skills in zero-knowledge proofs and Rust for blockchain scalability.
+    \item \textbf{Hobbies:} Active hackathon participant, cybersecurity and DeFi enthusiast, basketball player, snowboarder, Catan strategist, and Web3 community builder.
+\end{itemize}
+
+
+\vfill
+\center{\footnotesize Last updated: \today}
+
+\end{document}
