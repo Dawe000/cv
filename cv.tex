@@ -79,7 +79,8 @@
 %CV Sections inspired by: 
 %http://stefano.italians.nl/archives/26
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{10pt}
+\titlespacing{\section}{0pt}{6pt}{6pt}
+
 
 %for publications
 \usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
@@ -113,8 +114,7 @@
 \Huge{Dawid Pisarczyk} \\[7.5pt]
 \href{https://github.com/Dawe000}{\raisebox{-0.05\height}\faGithub\ Dawe000} \ $|$ \ 
 \href{https://www.linkedin.com/in/dawid-pisarczyk-657850147/}{\raisebox{-0.05\height}\faLinkedin\ Dawid Pisarczyk} \ $|$ \  
-\href{mailto:dawid.pisarczyk@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ dawid.pisarczyk@gmail.com} \ $|$ \ 
-\href{tel:+447756636038}{\raisebox{-0.05\height}\faMobile \ +447756636038} \ $|$ \
+\href{mailto:dawid.pisarczyk@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ dawid.pisarczyk@gmail.com} \/ $|$ \
 \href{https://dawidpisarczyk.com}{\raisebox{-0.05\height}\faGlobe \ dawidpisarczyk.com} \\
 \end{tabularx}
 
@@ -124,7 +124,50 @@
 %----------------------------------------------------------------------------------------
 
 \section{Summary}
-Innovative and driven software developer with a strong foundation in blockchain technologies, decentralized finance (DeFi), and smart contract security. Experienced in building scalable decentralized applications, integrating cryptocurrency wallets, and developing Web3 infrastructure. Proficient in TypeScript, React, and Solidity, with hands-on experience across the full development stack including hosting, SEO, and secure backend integration. Currently pursuing an MEng in Computer Science with Cyber Security at the University of Southampton, with a focus on privacy-enhancing technologies and blockchain scalability. Passionate about contributing to cutting-edge DeFi and wallet infrastructure projects, leveraging strong problem-solving skills and a deep curiosity for emerging technologies in the Web3 ecosystem.
+Ethereum developer with hands-on experience building smart contracts, dApps, and full-stack Web3 systems. Designed autonomous on-chain agent frameworks and developed X402-enabled MCP tools. Experienced in REST APIs, web applications, and deploying on Cloudflare and Vercel.
+
+
+
+%----------------------------------------------------------------------------------------
+% WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{Engineering Intern – 0em Labs} & \hfill June 2025 – September 2025 \\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, after=\strut, leftmargin=1em, itemsep=1pt]
+        \item[--] Built usage-based LLM payment systems with Privy-backed per-call billing, improving accessibility for developers and end users.
+        \item[--] Developed custom ERC4337 smart contract wallets and wallet-less onboarding flows, simplifying Web3 UX for non-technical audiences.
+        \item[--] Created a custodial wallet SDK with delegated transaction execution and on-chain rate limits for agents.
+        \item[--] Implemented X402 monetization for MCP providers and deployed high-availability infrastructure on Cloudflare Workers.
+    \end{itemize}
+\end{minipage}
+}
+\end{tabularx}
+
+\vspace{-10pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{\href{https://lyneth.xyz}{Co-Founder – Lyneth}} & \hfill April 2025 – Present \\[1pt]
+\multicolumn{2}{@{}X@{}}{
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, after=\strut, leftmargin=1em, itemsep=1pt]
+        \item[--] Building trust infrastructure for agentic economies—decentralized systems that enable verifiable trust when agents replace intermediaries, funded by a \$20,000 grant from Venice AI.
+        
+        \item[--] Developing infrastructure on top of ERC-8004 registries for identity, reputation, and validation, analyzing feedback history, owner wallet patterns, and interaction quality to surface meaningful reputation signals.
+        
+        \item[--] Building comprehensive protection mechanisms: sybil resistance through wallet clustering and behavior analysis, griefing protection by detecting coordinated attacks, and validation systems that cross-reference multiple trust signals.
+    \end{itemize}
+\end{minipage}
+}
+\end{tabularx}
+
+
+
+
 
 %----------------------------------------------------------------------------------------
 % PROJECTS
@@ -134,48 +177,37 @@ Innovative and driven software developer with a strong foundation in blockchain 
 
 \begin{tabularx}{\linewidth}{@{}l r@{}}
 
-\textbf{CodeGene – AI-Powered Smart Contract Security Platform} & \hfill \href{https://github.com/dawe000/codegene}{GitHub} \\[4pt]
 \multicolumn{2}{@{}X@{}}{
-\begin{itemize}[leftmargin=*]
-    \item Developed a VS Code extension for Hardhat projects, integrating AI-driven vulnerability scanning and automated penetration test generation directly within the IDE.
-    \item Implemented real-time security insights and in-editor remediation suggestions, streamlining the audit process through seamless integration with local Hardhat environments and LLM-driven test refinement.
-    \item Introduced cross-chain contract translation capabilities, facilitating interoperability across different blockchain platforms.
-    \item Deployed NFT-backed insurance certificates (ERC-721 tokens) that serve as verifiable on-chain proofs of insurance, providing blockchain developers with a comprehensive safety net for smart contract deployment.
-\end{itemize}
-} \\ [6pt]
+\begin{itemize}[leftmargin=1.2em, itemsep=1pt]
 
-\textbf{LLMBroker – Decentralized Compute-Sharing Platform for LLMs} & \hfill \href{https://github.com/Dawe000/LLMBroker}{GitHub} \\[4pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{itemize}[leftmargin=*]
-    \item Engineered a decentralized platform enabling users to run large language model (LLM) inferences on idle computing hardware, offering crypto rewards to participants.
-    \item Integrated smart contracts, remote procedure call (RPC) interactions, RESTful APIs, and cryptocurrency payment mechanisms to facilitate secure and trustless transactions.
-    \item Utilized the Flare Time Series Oracle (FTSO) to obtain real-time FLR-to-USD price data, stabilizing input token prices within smart contracts and ensuring fair compensation for compute providers.
-    \item Published an NPM package that simplifies interaction with the smart contract marketplace, abstracting token purchasing, server discovery, and request handling into an easy-to-use JavaScript library.
-\end{itemize}
-} \\[6pt]
+    \item \textbf{\href{https://github.com/agent0lab}{Agent0}} – Semantic search service for ERC-8004 agents using Subgraph, Cloudflare Workers, Venice AI embeddings, and Pinecone. Contributed semantic search integration to the SDK with multi-chain support.
 
-\textbf{XRPLendNet – NFT-Collateralized Lending DApp} & \hfill \href{https://github.com/DanyloPiatyhorets/XRPLendNet}{GitHub} \\[4pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{itemize}[leftmargin=*]
-    \item Developed a decentralized application (DApp) on the XRP Ledger EVM sidechain, enabling users to securely and conveniently set up, trade, and achieve loans between users using NFTs as collateral.
-    \item Designed loans as transferable NFTs, allowing for securitization, transferability, and collateral functionality.
-    \item Implemented functionality for NFTs and tokenized real-world assets (RWAs) to serve as collateral for loans, enhancing the utility and liquidity of digital assets.
-    \item Recognized with a technical prize at the EasyA XRP London Hackathon for innovation in decentralized finance solutions.
-\end{itemize}
-} \\[6pt]
+    \item \textbf{\href{https://github.com/ojasarora77/encode-london2025}{CompassDAO}} – Semantic search engine for ERC-8004 agents using vector embeddings of agents in identity registry, DAO economically incentivising high quality feedback, trust rating based on feedback registry, and x402-enabled semantic search MCP.  
+    \textit{Prize: Arbitrum Foundation Bounty – Encode London 2025}
 
-\textbf{AssetXChange – Real-World Asset Tokenization DApp} & \hfill \href{https://github.com/ojasarora77/AssetXchange}{GitHub} \\[4pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{itemize}[leftmargin=*]
-    \item Created a user-friendly DApp for tokenizing and managing real-world assets on the Etherlink Layer 2 blockchain, making asset management accessible to non-technical users.
-    \item Enabled businesses to create customizable "Asset Types" and tokenized assets, facilitating internal resource management or customer transactions.
-    \item Deployed ERC-721 smart contracts on the Etherlink testnet to enhance secure linking of on-chain and off-chain data, ensuring transparency and traceability of assets.
-    \item Recognized for innovation with a mainline track prize at the ETH Oxford Hackathon, highlighting the project's impact on simplifying asset tokenization processes.
-\end{itemize}
-}
+    \item \textbf{\href{https://github.com/dawe000/codegene}{CodeGene}} – Agent for smart contract auditing and pentesting inside VS Code, including LLM-generated pentests and NFT-backed insurance certificates.  
+    \textit{Prize: Nethermind "Create your Agentic Future" Bounty – Encode London 2025}
+
+    \item \textbf{\href{https://github.com/DanyloPiatyhorets/XRPLendNet}{XRPLendNet}} – NFT-collateralized lending protocol on XRPL EVM, enabling transferable and divisible loan positions, with support for pooling multiple loans into bond-like instruments that can be fractionally traded. 
+    \textit{Prize: Technical Track Finalist – EasyA XRP London 2024}
+
+    \item \textbf{\href{https://github.com/ojasarora77/AssetXchange}{AssetXChange}} – RWA tokenization platform on Etherlink L2 for accessible on-chain asset issuance and management.  
+    \textit{Prize: Mainline Track Winner – ETH Oxford 2024}
+
+
+\end{itemize}}
+\\[4pt]
 
 \end{tabularx}
 
+\section{Skills}
+
+\begin{itemize}[leftmargin=1.2em, itemsep=0pt]
+\item Web \& App Development: React, React Native/Expo, Next.js, TailwindCSS, REST APIs, Hono.js, Express.js
+\item Blockchain \& Protocols: Solidity, Hardhat, Foundry, Subgraph, ERC8004, EIP-7702, Thirdweb, CDP, web3.js, Privy, ethers.js, IPFS, X402 
+\item Programming \& Tools: TypeScript, JavaScript, Python, Java, C\#, Haskell, SQL; Git/GitHub, Vercel, Cloudflare, vector search (Pinecone), MCP, A2A
+
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
 % EDUCATION
@@ -183,74 +215,11 @@ Innovative and driven software developer with a strong foundation in blockchain 
 
 \section{Education}
 \begin{tabularx}{\linewidth}{@{}l X@{}} 	
-September 2023 - July 2027 & MEng Comp Sci with Cyber Security at \textbf{University of Southampton} \hfill \normalsize \\
+September 2023 - July 2026 & BEng Comp Sci with Cyber Security at \textbf{University of Southampton} \hfill \normalsize \\
 
-September 2021 - July 2023 & Alevels at \textbf{Bournemouth School} \hfill (AAAB) \\
+September 2021 - July 2023 & A Levels at \textbf{Bournemouth School} \hfill (AAAB) \\
 \end{tabularx}
 
-
-%----------------------------------------------------------------------------------------
-% SKILLS
-%----------------------------------------------------------------------------------------
-
-\section{Skills}
-
-\begin{itemize}
-    \item \textbf{Web Development:} ReactJS, NextJS, TailwindCSS, RESTful APIs using ExpressJS
-    \item \textbf{Blockchain \& Smart Contracts:} Solidity, Hardhat, Remix, RPC \& Wallet interaction (Thirdweb, web3js), IPFS, ERC20
-    \item \textbf{Programming Languages:} Javascript, Typescript, Java, C\#, SQL (SQLite, DataGrip), Haskell, LaTeX, Solidity, Python
-    \item \textbf{Tools \& Frameworks:} Node.js, Git/GitHub, Vercel, Solidity, Remix IDE
-    \item \textbf{Cloud \& APIs:} Cloudflare, Vercel, RESTful APIs (ExpressJS), Flare Time Series Oracle (FTSO)
-    \item \textbf{Security \& Cryptography:} Cybersecurity fundamentals, encryption techniques, smart contract security
-\end{itemize}
-
-%----------------------------------------------------------------------------------------
-% WORK EXPERIENCE
-%----------------------------------------------------------------------------------------
-
-\section{Work Experience}
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Freelance Web Developer – Architectural Studio} & \hfill February 2025 – Present \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep, after=\strut, leftmargin=1em, itemsep=3pt]
-        \item[--] Designed and developed a responsive, SEO-optimized website showcasing the firm's portfolio, enhancing online visibility and client engagement.
-        \item[--] Implemented a secure contact form with backend integration, facilitating efficient client inquiries and communication.
-        \item[--] Managed domain registration, hosting setup, and ongoing maintenance, ensuring website reliability and performance.
-        \item[--] Collaborated closely with the architectural team to translate design aesthetics into a cohesive digital presence.
-    \end{itemize}
-\end{minipage}
-}
-\end{tabularx}
-
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Team Member - Wingstop Southampton} & \hfill August 2024 - January 2025\\[3.75pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-        \item[--] Efficiently learned and adapted to various FOH and BOH roles, leveraging previous skills to quickly become proficient and support smooth operations.
-        \item[--] Delivered fast, friendly customer service while maintaining food quality and safety standards, ensuring a positive dining experience.
-        \item[--] Collaborated closely with team members to ensure seamless coordination during peak hours, contributing to overall team success and customer satisfaction.
-    \end{itemize}
-    \end{minipage}
-}
-\end{tabularx}
-
-
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Volunteer Teaching Assistant - ABC Polish School Poole} & \hfill September 2022 - April 2023 \\[3.75pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep,after=\strut, leftmargin=1em, itemsep=3pt]
-        \item[--] Supported teachers in delivering lessons and activities to students, providing individualized assistance where needed.
-        \item[--] Offered support to students with their language learning journey, reinforcing concepts and facilitating practice sessions.
-        \item[--] Incorporated elements of Polish culture into lesson plans, enriching students' understanding of their heritage through activities such as storytelling, traditional games, or celebrating Polish holidays.
-    \end{itemize}
-    \end{minipage}
-}
-\end{tabularx}
 
 
 
@@ -259,14 +228,11 @@ September 2021 - July 2023 & Alevels at \textbf{Bournemouth School} \hfill (AAAB
 %----------------------------------------------------------------------------------------
 
 \section{Extracurriculars and Interests}
+Contributing to the Agent0 ERC8004 sdk, President of Decentralised Society at Southampton University, Active hackathon participant, cybersecurity and DeFi enthusiast, basketball player, snowboarder
 
-\begin{itemize}[leftmargin=*]
-    \item \textbf{Current Focus:} Deepening expertise in smart contract security, exploring Trusted Execution Environments (TEEs), and advancing skills in zero-knowledge proofs and Rust for blockchain scalability.
-    \item \textbf{Hobbies:} Active hackathon participant, cybersecurity and DeFi enthusiast, basketball player, snowboarder, Catan strategist, and Web3 community builder.
-\end{itemize}
 
 
 \vfill
-\center{\footnotesize Last updated: \today}
+
 
 \end{document}
