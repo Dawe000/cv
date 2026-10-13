@@ -9,7 +9,7 @@
 % to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 % copies of the Software, and to permit persons to whom the Software is
 % furnished to do so, subject to the following conditions:
-% 
+%
 % THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 % IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 % FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -17,94 +17,98 @@
 % LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 % OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 % THE SOFTWARE.
-% 
+%
 %
 %-----------------------------------------------------------------------------------------------------------------------------------------------%
+
+% General / master CV (v3, revision pass). Role-specific one-pagers are cut from this file:
+% each Levanto group (\grp) is a unit a one-pager keeps or deletes whole.
+% See cv-playbook.md for the rules applied.
 
 %----------------------------------------------------------------------------------------
 % DOCUMENT DEFINITION
 %----------------------------------------------------------------------------------------
 
-% article class because we want to fully customize the page and not use a cv template
-\documentclass[a4paper,10pt]{article}
-
-%----------------------------------------------------------------------------------------
-% FONT
-%----------------------------------------------------------------------------------------
-
-% % fontspec allows you to use TTF/OTF fonts directly
-% \usepackage{fontspec}
-% \defaultfontfeatures{Ligatures=TeX}
-
-% % modified for ShareLaTeX use
-% \setmainfont[
-% SmallCapsFont = Fontin-SmallCaps.otf,
-% BoldFont = Fontin-Bold.otf,
-% ItalicFont = Fontin-Italic.otf
-% ]
-% {Fontin.otf}
+\documentclass[a4paper,11pt]{article}
 
 %----------------------------------------------------------------------------------------
 % PACKAGES
 %----------------------------------------------------------------------------------------
 \usepackage{url}
-\usepackage{parskip} 	
+\usepackage{parskip}
 
-%other packages for formatting
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
 \usepackage[scale=0.9]{geometry}
 
-%tabularx environment
 \usepackage{tabularx}
-
-%for lists within experience section
 \usepackage{enumitem}
+\usepackage{needspace}
 
 % centered version of 'X' col. type
-\newcolumntype{C}{>{\centering\arraybackslash}X} 
+\newcolumntype{C}{>{\centering\arraybackslash}X}
 
-%to prevent spillover of tabular into next pages
-\usepackage{supertabular}
-\usepackage{tabularx}
-\newlength{\fullcollw}
-\setlength{\fullcollw}{0.47\textwidth}
-
-%custom \section
-\usepackage{titlesec} 				
-\usepackage{multicol}
-\usepackage{multirow}
-
-%CV Sections inspired by: 
-%http://stefano.italians.nl/archives/26
+\usepackage{titlesec}
 \titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
 \titlespacing{\section}{0pt}{6pt}{6pt}
 
-
-%for publications
-\usepackage[style=authoryear,sorting=ynt, maxbibnames=2]{biblatex}
-
-%Setup hyperref package, and colours for links
+% links: blue = public, checkable work
 \usepackage[unicode, draft=false]{hyperref}
 \definecolor{linkcolour}{rgb}{0,0.2,0.6}
-\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour}
-\addbibresource{citations.bib}
-\setlength\bibitemsep{1em}
+\hypersetup{colorlinks,breaklinks,urlcolor=linkcolour,linkcolor=linkcolour,
+  pdftitle={Dawid Pisarczyk - CV},pdfauthor={Dawid Pisarczyk}}
 
-%for social icons
+% social icons in the header (Dawid prefers them over plain URLs)
 \usepackage{fontawesome5}
 
-%debug page outer frames
-%\usepackage{showframe}
+% one job entry: title, dates, then a bullet list
+\newenvironment{job}[2]{%
+\needspace{4\baselineskip}%
+\begin{tabularx}{\linewidth}{ @{}X r@{} }
+\textbf{#1} & #2 \\[1pt]
+\end{tabularx}
+\vspace{-11pt}
+\begin{itemize}[nosep, leftmargin=1em, itemsep=1.5pt]
+}{%
+\end{itemize}
+\vspace{4pt}
+}
+
+% job entry with a one-line italic context under the title (playbook R6)
+\newenvironment{jobctx}[3]{%
+\needspace{5\baselineskip}%
+\begin{tabularx}{\linewidth}{ @{}X r@{} }
+\textbf{#1} & #2 \\[1pt]
+\multicolumn{2}{@{}p{\linewidth}@{}}{\small\itshape\color{black!75} #3} \\
+\end{tabularx}
+\vspace{-11pt}
+\begin{itemize}[nosep, leftmargin=1em, itemsep=1.5pt]
+}{%
+\end{itemize}
+\vspace{4pt}
+}
+
+% bold lead-in; \looseness=-1 asks TeX to pull a one-word last line back up when it can
+\newcommand{\lead}[1]{\looseness=-1\textbf{#1:}}
+% visible, plain-text group label inside a job (ATS-safe: no icons, no columns).
+% \nobreak + \@nobreaktrue suppress the item penalty after the label, so a label is
+% never stranded at the bottom of a page (\needspace would attract breaks here).
+\makeatletter
+\newcommand{\grp}[1]{\vspace{3pt}\item[]\hspace{-1em}{\color{black!70}\textsc{#1}}\par\nobreak\@nobreaktrue}
+\makeatother
+% keep "ERC-8004" on one line (it was splitting as "ERC-/8004")
+\newcommand{\ERC}{\mbox{ERC-8004}}
+% linked role headings (blue, like other links)
+\newcommand{\plainhref}[2]{\href{#1}{#2}}
 
 %----------------------------------------------------------------------------------------
 % BEGIN DOCUMENT
 %----------------------------------------------------------------------------------------
 \begin{document}
 
-% non-numbered pages
-\pagestyle{empty} 
+\pagestyle{empty}
+\emergencystretch=1em
 
 %----------------------------------------------------------------------------------------
 % TITLE
@@ -112,21 +116,18 @@
 
 \begin{tabularx}{\linewidth}{@{} C @{} }
 \Huge{Dawid Pisarczyk} \\[7.5pt]
-\href{https://github.com/Dawe000}{\raisebox{-0.05\height}\faGithub\ Dawe000} \ $|$ \ 
-\href{https://www.linkedin.com/in/dawid-pisarczyk-657850147/}{\raisebox{-0.05\height}\faLinkedin\ Dawid Pisarczyk} \ $|$ \  
-\href{mailto:dawid.pisarczyk@gmail.com}{\raisebox{-0.05\height}\faEnvelope \ dawid.pisarczyk@gmail.com} \/ $|$ \
-\href{https://dawidpisarczyk.com}{\raisebox{-0.05\height}\faGlobe \ dawidpisarczyk.com} \\
+\href{https://github.com/Dawe000}{\raisebox{-0.05\height}\faGithub\ Dawe000} \ $|$ \
+\href{https://www.linkedin.com/in/dawid-pisarczyk-657850147/}{\raisebox{-0.05\height}\faLinkedin\ Dawid Pisarczyk} \ $|$ \
+\href{mailto:dawid.pisarczyk@gmail.com}{\raisebox{-0.05\height}\faEnvelope\ dawid.pisarczyk@gmail.com} \ $|$ \
+\href{https://dawidpisarczyk.com}{\raisebox{-0.05\height}\faGlobe\ dawidpisarczyk.com} \\
 \end{tabularx}
-
 
 %----------------------------------------------------------------------------------------
 % SUMMARY
 %----------------------------------------------------------------------------------------
 
 \section{Summary}
-Ethereum developer with hands-on experience building smart contracts, dApps, and full-stack Web3 systems. Designed autonomous on-chain agent frameworks and developed X402-enabled MCP tools. Experienced in REST APIs, web applications, and deploying on Cloudflare and Vercel.
-
-
+Founding engineer building security, evaluation and payments infrastructure for AI agents: an agent policy-enforcement engine, prompt-injection benchmarks and automated red-teaming, an LLM router (about 70\% lower spend at near-equal quality) and agent payments in open-source Ethereum SDKs. First Class BEng Computer Science with Cyber Security, Southampton (2026).
 
 %----------------------------------------------------------------------------------------
 % WORK EXPERIENCE
@@ -134,105 +135,82 @@ Ethereum developer with hands-on experience building smart contracts, dApps, and
 
 \section{Work Experience}
 
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{Engineering Intern – 0em Labs} & \hfill June 2025 – September 2025 \\[1pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep, after=\strut, leftmargin=1em, itemsep=1pt]
-        \item[--] Built usage-based LLM payment systems with Privy-backed per-call billing, improving accessibility for developers and end users.
-        \item[--] Developed custom ERC4337 smart contract wallets and wallet-less onboarding flows, simplifying Web3 UX for non-technical audiences.
-        \item[--] Created a custodial wallet SDK with delegated transaction execution and on-chain rate limits for agents.
-        \item[--] Implemented X402 monetization for MCP providers and deployed high-availability infrastructure on Cloudflare Workers.
-    \end{itemize}
-\end{minipage}
-}
-\end{tabularx}
+\begin{jobctx}{\plainhref{https://levanto.ai}{Founding Engineer -- Levanto Labs (formerly Agent0)}}{Feb 2026 -- Present}{AI-agent infrastructure startup: open-source Ethereum agent SDKs, agent security, and Sage, a decision model with calibrated confidence. Open-source contributor from Nov 2025; part-time from Feb 2026 during final year; full-time from Jun 2026.}
+    % agent security product: never launched, so no production/customer/live claims
+    \grp{Agent security}
+    \item[--] \lead{Agent security product} a product that checks AI agents' actions against policy before they run; built most of its enforcement engine, counterparty due diligence, the admin dashboard and its AWS infrastructure (Terraform).
+    \item[--] \lead{Agent integrations} built LangChain middleware for Python and TypeScript that checks every tool call against policy before it runs and blocks any that break it.
+    \grp{Evaluation and red-teaming}
+    \item[--] \lead{Prompt-injection benchmark} built a paired prompt-injection/jailbreak benchmark; Sage v0.6 scored 0.978 AUC, close to GPT-5 (0.988) at under a quarter of the latency, and ahead of Sentinel (0.864) and Google Model Armor (0.609).
+    \item[--] \lead{Benchmark audit} showed that leading public prompt-injection benchmarks (LLMail, AgentHarm, TensorTrust, SafeGuard) can be separated by surface features alone: a bag-of-words baseline scores near-perfect AUC (up to 1.00), and three are separable by message length. High scores on them therefore don't show that a defence understands context. Used this to harden our own benchmark.
+    \item[--] \lead{Automated red-teaming} built automated multi-turn attackers (TAP, Crescendo) that found 26 confirmed breaks in frontier Claude models across 2,018 attacks.
+    \item[--] \lead{Defence evaluation} built a multi-source evaluation harness for 8 prompt-injection defences; showed that popular open-source defences (pytector, LlamaFirewall) barely reduced attack success on the ASB agent benchmark.
+    \grp{Agent identity and payments (open source)}
+    \item[--] \lead{Agent0 SDKs} shipped x402 payments and A2A messaging in the TypeScript and Python SDKs for \ERC{} agent identity, the headline features of \href{https://github.com/agent0lab/agent0-ts}{agent0-sdk 1.7.0}.
+    \item[--] \lead{Agent search} built the \href{https://github.com/agent0lab/search-service}{semantic search service} for finding ERC-8004 agents across chains (Cloudflare Workers, Pinecone); gave an \ERC{} workshop at the Spider AI Agents Bootcamp.
+    \grp{Sage: model routing, SDKs and demos}
+    \item[--] \lead{LLM routing} built the OpenAI/Anthropic-compatible proxy and ranking service of a model router on the AntSeed inference marketplace; in evaluation, about 70\% lower LLM spend at 95\% of best-model quality.
+    \item[--] \lead{Routing protocol} co-authored AntSeed's model-routing spec, \href{https://github.com/Antseed/AIPs/pull/10}{AIP-5}, and built its routing server on AWS.
+    \item[--] \lead{Sage SDKs and demos} built the first TypeScript and Python Sage SDKs, the original \href{https://levanto.ai}{levanto.ai} landing page and \href{https://gallery.levanto.ai}{gallery.levanto.ai} (five live Sage demos).
+\end{jobctx}
 
-\vspace{-10pt}
+\begin{job}{\plainhref{https://lyneth.ai}{Co-Founder -- Lyneth}}{Apr 2025 -- 2026}
+    \item[--] Secured a \$20,000 Venice AI grant to build a reputation and trust layer for AI agents on the \ERC{} identity, reputation and validation registries.
+    \item[--] Partnered with SKALE for zero-gas on-chain reputation data and joined the Hashgraph Online (HOL) Partner Program, contributing to HOL specifications.
+    \item[--] Built the agent explorer, a natural-language platform agent, and reputation scoring with sybil resistance (wallet clustering, behaviour analysis) and griefing detection. Grew a 400+ member community.
+\end{job}
 
-\begin{tabularx}{\linewidth}{ @{}l r@{} }
-\textbf{\href{https://lyneth.xyz}{Co-Founder – Lyneth}} & \hfill April 2025 – Present \\[1pt]
-\multicolumn{2}{@{}X@{}}{
-\begin{minipage}[t]{\linewidth}
-    \begin{itemize}[nosep, after=\strut, leftmargin=1em, itemsep=1pt]
-        \item[--] Building trust infrastructure for agentic economies—decentralized systems that enable verifiable trust when agents replace intermediaries, funded by a \$20,000 grant from Venice AI.
-        
-        \item[--] Developing infrastructure on top of ERC-8004 registries for identity, reputation, and validation, analyzing feedback history, owner wallet patterns, and interaction quality to surface meaningful reputation signals.
-        
-        \item[--] Building comprehensive protection mechanisms: sybil resistance through wallet clustering and behavior analysis, griefing protection by detecting coordinated attacks, and validation systems that cross-reference multiple trust signals.
-    \end{itemize}
-\end{minipage}
-}
-\end{tabularx}
-
-
-
-
-
-%----------------------------------------------------------------------------------------
-% PROJECTS
-%----------------------------------------------------------------------------------------
-
-\section{Projects}
-
-\begin{tabularx}{\linewidth}{@{}l r@{}}
-
-\multicolumn{2}{@{}X@{}}{
-\begin{itemize}[leftmargin=1.2em, itemsep=1pt]
-
-    \item \textbf{\href{https://github.com/agent0lab}{Agent0}} – Semantic search service for ERC-8004 agents using Subgraph, Cloudflare Workers, Venice AI embeddings, and Pinecone. Contributed semantic search integration to the SDK with multi-chain support.
-
-    \item \textbf{\href{https://github.com/ojasarora77/encode-london2025}{CompassDAO}} – Semantic search engine for ERC-8004 agents using vector embeddings of agents in identity registry, DAO economically incentivising high quality feedback, trust rating based on feedback registry, and x402-enabled semantic search MCP.  
-    \textit{Prize: Arbitrum Foundation Bounty – Encode London 2025}
-
-    \item \textbf{\href{https://github.com/dawe000/codegene}{CodeGene}} – Agent for smart contract auditing and pentesting inside VS Code, including LLM-generated pentests and NFT-backed insurance certificates.  
-    \textit{Prize: Nethermind "Create your Agentic Future" Bounty – Encode London 2025}
-
-    \item \textbf{\href{https://github.com/DanyloPiatyhorets/XRPLendNet}{XRPLendNet}} – NFT-collateralized lending protocol on XRPL EVM, enabling transferable and divisible loan positions, with support for pooling multiple loans into bond-like instruments that can be fractionally traded. 
-    \textit{Prize: Technical Track Finalist – EasyA XRP London 2024}
-
-    \item \textbf{\href{https://github.com/ojasarora77/AssetXchange}{AssetXChange}} – RWA tokenization platform on Etherlink L2 for accessible on-chain asset issuance and management.  
-    \textit{Prize: Mainline Track Winner – ETH Oxford 2024}
-
-
-\end{itemize}}
-\\[4pt]
-
-\end{tabularx}
-
-\section{Skills}
-
-\begin{itemize}[leftmargin=1.2em, itemsep=0pt]
-\item Web \& App Development: React, React Native/Expo, Next.js, TailwindCSS, REST APIs, Hono.js, Express.js
-\item Blockchain \& Protocols: Solidity, Hardhat, Foundry, Subgraph, ERC8004, EIP-7702, Thirdweb, CDP, web3.js, Privy, ethers.js, IPFS, X402 
-\item Programming \& Tools: TypeScript, JavaScript, Python, Java, C\#, Haskell, SQL; Git/GitHub, Vercel, Cloudflare, vector search (Pinecone), MCP, A2A
-
-\end{itemize}
+\begin{job}{Engineering Intern -- 0em Labs}{Jun 2025 -- Sep 2025}
+    \item[--] Built usage-based LLM payment systems with Privy-backed per-call billing.
+    \item[--] Developed custom ERC-4337 smart contract wallets and wallet-less onboarding flows for non-technical users.
+    \item[--] Created a custodial wallet SDK with delegated transaction execution and on-chain rate limits for agents.
+    \item[--] Implemented x402 monetisation for MCP providers, deployed on Cloudflare Workers.
+\end{job}
 
 %----------------------------------------------------------------------------------------
 % EDUCATION
 %----------------------------------------------------------------------------------------
 
 \section{Education}
-\begin{tabularx}{\linewidth}{@{}l X@{}} 	
-September 2023 - July 2026 & BEng Comp Sci with Cyber Security at \textbf{University of Southampton} \hfill \normalsize \\
-
-September 2021 - July 2023 & A Levels at \textbf{Bournemouth School} \hfill (AAAB) \\
+\begin{tabularx}{\linewidth}{@{}X r@{}}
+\textbf{University of Southampton} & 2023 -- 2026 \\[1pt]
+\multicolumn{2}{@{}l@{}}{BEng Computer Science with Cyber Security -- \textbf{First Class Honours}} \\
 \end{tabularx}
-
-
-
+\vspace{-11pt}
+\begin{itemize}[nosep, leftmargin=1em, itemsep=1.5pt]
+    \item[--] Final year project (77\%): \textit{Ethereum Smart Wallet SDK with Advanced Delegation Features}, EIP-7702 smart accounts with a paymaster and advanced delegation controls.
+    \item[--] Selected modules: Cloud Application Development (82), Web and Cloud Based Security (80), Principles of Cyber Security (79), Intelligent Systems (77), Distributed Systems and Networks (75), Machine Learning Technologies (72).
+    \item[--] President, Decentralised Society (2025/26).
+\end{itemize}
 
 %----------------------------------------------------------------------------------------
-% EXTRACURRICULARS
+% HACKATHONS
 %----------------------------------------------------------------------------------------
 
-\section{Extracurriculars and Interests}
-Contributing to the Agent0 ERC8004 sdk, President of Decentralised Society at Southampton University, Active hackathon participant, cybersecurity and DeFi enthusiast, basketball player, snowboarder
+% prizes inline (no \hfill): right-aligned prizes extracted out of order in pdfminer
+\section{Hackathons}
 
+\begin{itemize}[nosep, leftmargin=1em, itemsep=1.5pt]
+    \item[--] \textbf{\href{https://github.com/ojasarora77/compass-dao}{CompassDAO}}: semantic search for \ERC{} agents \textit{(Arbitrum Foundation Bounty, Encode London 2025)}
+    \item[--] \textbf{\href{https://github.com/dawe000/codegene}{CodeGene}}: LLM smart-contract auditing agent for VS Code \textit{(Nethermind Bounty, Encode AI 2025)}
+    \item[--] \textbf{\href{https://github.com/ojasarora77/AssetXchange}{AssetXChange}}: RWA tokenisation on Etherlink L2 \textit{(Mainline Track Winner, ETH Oxford 2024)}
+    \item[--] \textbf{\href{https://github.com/DanyloPiatyhorets/XRPLendNet}{XRPLendNet}}: NFT-collateralised lending on XRPL \textit{(Technical Track Finalist, EasyA XRP London 2024)}
+\end{itemize}
 
+%----------------------------------------------------------------------------------------
+% SKILLS
+%----------------------------------------------------------------------------------------
 
-\vfill
+\section{Skills}
 
+\begin{itemize}[nosep, leftmargin=1em, itemsep=1.5pt]
+\item[--] \textbf{ML \& Evaluation:} classifier and model evaluation (ROC-AUC, precision/recall, FPR-based thresholds), benchmark and dataset design, label audits, synthetic data generation, robustness and \mbox{out-of-distribution} (OOD) testing, shortcut baselines, embeddings and vector search
+\item[--] \textbf{AI \& LLMs:} model routing, LLM-as-judge, automated red-teaming (TAP, Crescendo), prompt optimisation, batch inference, Claude and OpenAI APIs, MCP, Agent2Agent (A2A), LangChain
+\item[--] \textbf{Security:} agent policy enforcement (CEL), prompt-injection and jailbreak defence, PII redaction, tenant isolation, threat-intelligence integrations (Google Web Risk, AbuseIPDB, WhoisXML), SIWE
+\item[--] \textbf{Languages:} TypeScript, Python, SQL, Solidity
+\item[--] \textbf{Backend \& Infra:} FastAPI, Node/Hono, Postgres, AWS (ECS, RDS, S3), Terraform, Docker, Cloudflare Workers, GitHub Actions
+\item[--] \textbf{Frontend:} React, Next.js, Vite, Tailwind
+\item[--] \textbf{Web3:} Foundry, Hardhat, Anvil, ethers.js, The Graph (subgraphs), IPFS, Privy, Coinbase CDP; \ERC{}, x402 (EIP-3009), ERC-4337, EIP-7702, EIP-712, ERC-1271
+\end{itemize}
 
 \end{document}
